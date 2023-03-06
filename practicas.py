@@ -1,4 +1,4 @@
-import tkinter as tk
+import tkinter as Tk
 
 m = 1
 b = 0
@@ -27,15 +27,18 @@ def crear_lienzo(m,b):
 
 
 # Creacion de la interfaz grafica
-app = tk.Tk()
-app.geometry('500x400')
-#app.config(background='black')
+ventana = Tk()
+ventana.geometry('500x500')
+alto = ventana.winfo_height()
+print(alto)
+ventana.config(background='black')
 
-lienzo_nuevo = tk.StringVar(app)
+
+lienzo_nuevo = Tk.StringVar(ventana)
 lienzo_nuevo.set(crear_lienzo(m,b))
-m_nueva = tk.StringVar(app)
+m_nueva = Tk.StringVar(ventana)
 m_nueva.set(m)
-b_nueva = tk.StringVar(app)
+b_nueva = Tk.StringVar(ventana)
 b_nueva.set(b)
 
 
@@ -68,27 +71,25 @@ def actualizar():
     b_nueva.set(b)
     m_nueva.set(m)
 
-func_label = tk.Label(app, textvariable=lienzo_nuevo, bg="white", fg="black", height=30 , anchor= tk.CENTER# width=app.winfo_screenwidth()
+func_label = tk.Label(ventana, textvariable=lienzo_nuevo, bg="white", fg="black", height=30 , anchor= tk.CENTER# width=ventana.winfo_screenwidth()
 ).grid(row=0,column=0, rowspan=2)
  
-tk.Button( app, text='Disminuir m', bg="darkred", fg='black', command=disminuir_m
+tk.Button(ventana, text='Disminuir m', bg="darkred", fg='black', command=disminuir_m
 ).grid(row=0, column=1)
 
-tk.Label( app, textvariable=m_nueva, bg="white", fg="black",
+tk.Label(ventana, textvariable=m_nueva, bg="white", fg="black",
 ).grid(row=0, column=2)
 
-tk.Button(app, text='Aumentar m', bg="darkred", fg='black', command=aumentar_m
+tk.Button(ventana, text='Aumentar m', bg="darkred", fg='black', command=aumentar_m
 ).grid(row=0, column=3)
 
-tk.Button( app, text='Disminuir b', bg="darkred", fg='black', command=disminuir_b
+tk.Button(ventana, text='Disminuir b', bg="darkred", fg='black', command=disminuir_b
 ).grid(row=1, column=1)
 
-tk.Label( app, textvariable=b_nueva, bg="white", fg="black",
+tk.Label(ventana, textvariable=b_nueva, bg="white", fg="black",
 ).grid(row=1, column=2)
 
-tk.Button(app, text='Aumentar b', bg="darkred", fg='black', command=aumentar_b
+tk.Button(ventana, text='Aumentar b', bg="darkred", fg='black', command=aumentar_b
 ).grid(row=1, column=3)
 
-print(app.winfo_height())
-
-app.mainloop()
+ventana.mainloop()
